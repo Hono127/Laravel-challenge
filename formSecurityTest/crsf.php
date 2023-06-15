@@ -11,6 +11,7 @@ function h($str)
 }
 
 
+
 // 入力、確認、完了 input.php, confirm.php, thanks.php
 // CSRF 偽物のinput.php->悪意のあるページ
 // input.php
