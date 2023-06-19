@@ -19,11 +19,6 @@ function h($str)
   return htmlspecialchars($str, ENT_QUOTES, 'UTF-8');
 }
 
-
-// 入力、確認、完了 input.php, confirm.php, thanks.php
-// CSRF 偽物のinput.php->悪意のあるページ
-// input.php
-
 $pageFlag = 0;
 $errors = validation($_POST);
 
@@ -120,7 +115,12 @@ if (!empty($_POST['btn_submit'])) {
 
   <?php if ($pageFlag === 2) : ?>
     <?php if ($_POST['csrf'] === $_SESSION['csrfToken']) : ?>
+
+      <?php require_once '../mainte/insert.php';
+      insertContact($_POST);
+      ?>
       送信が完了しました。
+
 
       <?php unset($_SESSION['csrfToken']); ?>
     <?php endif; ?>
